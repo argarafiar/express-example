@@ -84,11 +84,11 @@ app.delete('/api/mahasiswa/:id', verifyToken, async (req, res) => {
 app.get('/api/mahasiswa', verifyToken, async (req, res) => {
   try {
     const [rows] = await dbConfig.execute('SELECT * FROM mahasiswa');
-    res.send(rows);
+    res.send({ data: rows });
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
